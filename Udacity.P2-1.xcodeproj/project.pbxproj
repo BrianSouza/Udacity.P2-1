@@ -12,6 +12,7 @@
 		E01DF5712170255C00E77029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01DF56F2170255C00E77029 /* Main.storyboard */; };
 		E01DF5732170258800E77029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E01DF5722170258800E77029 /* Assets.xcassets */; };
 		E01DF5762170258800E77029 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01DF5742170258800E77029 /* LaunchScreen.storyboard */; };
+		E0EB195921795D6700C0AAC8 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EB195821795D6600C0AAC8 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E01DF5722170258800E77029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E01DF5752170258800E77029 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E01DF5772170258800E77029 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0EB195821795D6600C0AAC8 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				E01DF5722170258800E77029 /* Assets.xcassets */,
 				E01DF5742170258800E77029 /* LaunchScreen.storyboard */,
 				E01DF5772170258800E77029 /* Info.plist */,
+				E0EB195821795D6600C0AAC8 /* Meme.swift */,
 			);
 			path = "Udacity.P2-1";
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0EB195921795D6700C0AAC8 /* Meme.swift in Sources */,
 				E01DF56E2170255C00E77029 /* ViewController.swift in Sources */,
 				E01DF56C2170255C00E77029 /* AppDelegate.swift in Sources */,
 			);
