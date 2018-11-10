@@ -8,57 +8,58 @@
 
 import UIKit
 
-class ViewController: UIViewController , UITextFieldDelegate,UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
-
+class vcCriadorMeme: UIViewController , UITextFieldDelegate,UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
     
+    var txtAtivo: UITextField!
+    var meme: Meme? = nil
+
     @IBOutlet weak var tbSup: UIToolbar!
     @IBOutlet weak var tbInfe: UIToolbar!
-    @IBOutlet weak var txtTOP: UITextField!
-    @IBOutlet weak var txtBOTTOM: UITextField!
+    @IBOutlet weak var txtTop: UITextField!
+    @IBOutlet weak var txtBottom: UITextField!
     @IBOutlet weak var btnCamera: UIBarButtonItem!
     @IBOutlet weak var btnCompartilhar: UIBarButtonItem!
     @IBOutlet weak var pickImage: UIImageView!
     @IBOutlet weak var btnAlbum: UIBarButtonItem!
+    @IBOutlet weak var btnCancelar: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        txtTOP.delegate = self
-        txtBOTTOM.delegate = self
-        
-        let memeTextAttributes: [String: Any] = [NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
-                                                 NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-                                                 NSAttributedStringKey.strokeWidth.rawValue: 1,
-                                                 NSAttributedStringKey.font.rawValue:UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
+        definirEstilosTextFields(textField: txtTop, texto: "TOP")
+        definirEstilosTextFields(textField: txtBottom, texto: "BOTTOM")
+    }
+    func definirEstilosTextFields(textField: UITextField,texto: String){
+        let memeTextAttributes: [String: Any] = [
+            NSAttributedStringKey.strokeWidth.rawValue: -3,
+            NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
+            NSAttributedStringKey.foregroundColor.rawValue: UIColor.white
         ]
         
-        txtTOP.defaultTextAttributes = memeTextAttributes
-        txtTOP.textAlignment = NSTextAlignment.center
-        txtTOP.text = "TOP"
-        
-        txtBOTTOM.defaultTextAttributes = memeTextAttributes
-        txtBOTTOM.textAlignment = NSTextAlignment.center
-        txtBOTTOM.text = "BOTTOM"
-        
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.delegate = self
+        textField.textAlignment = NSTextAlignment.center
+        //textField.text = texto
     }
+    
     override func viewDidAppear(_ animated: Bool) {
-        btnCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         btnCompartilhar.isEnabled = ((pickImage.image?.hashValue) != nil)
+    }
+    
+    func btnSelecionaImg(_ type: UIImagePickerControllerSourceType){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = type
+        present(imagePicker, animated: true, completion: nil)
     }
 
     @IBAction func btnCameraClicked(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-        
+        btnSelecionaImg(.camera)
     }
     @IBAction func btnAlbumClicked(_ sender: Any) {
-        
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true, completion: nil)
+        btnSelecionaImg(.photoLibrary)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let originalValue = info[UIImagePickerControllerOriginalImage] as? UIImage;
@@ -71,37 +72,47 @@ class ViewController: UIViewController , UITextFieldDelegate,UIImagePickerContro
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func save() {
+    @IBAction func compartilhar() {
+        
         let memedImage = generateMemedImage()
-        let meme = Meme(topo: txtTOP.text!, bottom: txtBOTTOM.text!, imgOriginal: pickImage.image!, imgNova: memedImage)
         
-        let compartilhar = UIActivityViewController(activityItems: [(meme.imgNova)], applicationActivities:nil)
+        let compartilhar = UIActivityViewController(activityItems: [(memedImage)], applicationActivities:nil)
         
+        compartilhar.completionWithItemsHandler = {(tipo: UIActivityType?,completo :Bool , itens: [Any]?, erro: Error?) in
+            if completo{
+                let meme = Meme(topo: self.txtTop.text!, bottom: self.txtBottom.text!, imgOriginal: self.pickImage.image!, imgNova: memedImage)
+                
+                let object = UIApplication.shared.delegate
+                let appDelegate = object as! AppDelegate
+                appDelegate.memes.append(meme)
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
         self.present(compartilhar, animated: true, completion: nil)
     }
+    func esconderToolBars(_ esconder: Bool){
+        tbSup.isHidden = esconder
+        tbInfe.isHidden = esconder
+    }
+    
     func generateMemedImage() -> UIImage {
-        
-        tbSup.isHidden = true
-        tbInfe.isHidden = true
-        
+        esconderToolBars(true)
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
-        tbSup.isHidden = false
-        tbInfe.isHidden = false
+        esconderToolBars(false)
         
         return memedImage
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == txtTOP{
-            txtTOP.text = ""
-        }
-        if textField == txtBOTTOM{
-            txtBOTTOM.text = ""
-        }
+        
+        txtAtivo = textField
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        txtAtivo = nil
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -132,19 +143,26 @@ class ViewController: UIViewController , UITextFieldDelegate,UIImagePickerContro
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-        
+        if txtAtivo == txtBottom{
         view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
     
     @objc func keyboardWillHide(_ notification:Notification){
         view.frame.origin.y = 0
+    }
+    @IBAction func cancelar(_ sender: Any) {
+        pickImage.image = nil
+        txtTop.text = ""
+        txtBottom.text = ""
+        btnCompartilhar.isEnabled = ((pickImage.image?.hashValue) != nil)
     }
 }
 

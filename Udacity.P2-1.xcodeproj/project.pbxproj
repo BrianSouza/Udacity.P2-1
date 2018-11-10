@@ -8,21 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		E01DF56C2170255C00E77029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01DF56B2170255C00E77029 /* AppDelegate.swift */; };
-		E01DF56E2170255C00E77029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01DF56D2170255C00E77029 /* ViewController.swift */; };
+		E01DF56E2170255C00E77029 /* vcCriadorMeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01DF56D2170255C00E77029 /* vcCriadorMeme.swift */; };
 		E01DF5712170255C00E77029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01DF56F2170255C00E77029 /* Main.storyboard */; };
 		E01DF5732170258800E77029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E01DF5722170258800E77029 /* Assets.xcassets */; };
 		E01DF5762170258800E77029 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01DF5742170258800E77029 /* LaunchScreen.storyboard */; };
+		E058EF6C219725E900E61780 /* vcVisualizar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E058EF6B219725E900E61780 /* vcVisualizar.swift */; };
+		E072535D219244E000482A7F /* SentMemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072535C219244E000482A7F /* SentMemesCollectionViewController.swift */; };
+		E072535F21924D2200482A7F /* CustomMemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072535E21924D2200482A7F /* CustomMemeCell.swift */; };
+		E084545E2194F82E00E3DDE0 /* SentMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E084545D2194F82E00E3DDE0 /* SentMemesTableViewController.swift */; };
+		E08454602194F94C00E3DDE0 /* SentMemesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E084545F2194F94C00E3DDE0 /* SentMemesTableViewCell.swift */; };
 		E0EB195921795D6700C0AAC8 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EB195821795D6600C0AAC8 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E01DF5682170255B00E77029 /* Udacity.P2-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Udacity.P2-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E01DF56B2170255C00E77029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E01DF56D2170255C00E77029 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E01DF56D2170255C00E77029 /* vcCriadorMeme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcCriadorMeme.swift; sourceTree = "<group>"; };
 		E01DF5702170255C00E77029 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E01DF5722170258800E77029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E01DF5752170258800E77029 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E01DF5772170258800E77029 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E058EF6B219725E900E61780 /* vcVisualizar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcVisualizar.swift; sourceTree = "<group>"; };
+		E072535C219244E000482A7F /* SentMemesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesCollectionViewController.swift; sourceTree = "<group>"; };
+		E072535E21924D2200482A7F /* CustomMemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMemeCell.swift; sourceTree = "<group>"; };
+		E084545D2194F82E00E3DDE0 /* SentMemesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewController.swift; sourceTree = "<group>"; };
+		E084545F2194F94C00E3DDE0 /* SentMemesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewCell.swift; sourceTree = "<group>"; };
 		E0EB195821795D6600C0AAC8 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,12 +67,17 @@
 			isa = PBXGroup;
 			children = (
 				E01DF56B2170255C00E77029 /* AppDelegate.swift */,
-				E01DF56D2170255C00E77029 /* ViewController.swift */,
+				E01DF56D2170255C00E77029 /* vcCriadorMeme.swift */,
 				E01DF56F2170255C00E77029 /* Main.storyboard */,
 				E01DF5722170258800E77029 /* Assets.xcassets */,
 				E01DF5742170258800E77029 /* LaunchScreen.storyboard */,
 				E01DF5772170258800E77029 /* Info.plist */,
 				E0EB195821795D6600C0AAC8 /* Meme.swift */,
+				E072535C219244E000482A7F /* SentMemesCollectionViewController.swift */,
+				E072535E21924D2200482A7F /* CustomMemeCell.swift */,
+				E084545D2194F82E00E3DDE0 /* SentMemesTableViewController.swift */,
+				E084545F2194F94C00E3DDE0 /* SentMemesTableViewCell.swift */,
+				E058EF6B219725E900E61780 /* vcVisualizar.swift */,
 			);
 			path = "Udacity.P2-1";
 			sourceTree = "<group>";
@@ -138,8 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E058EF6C219725E900E61780 /* vcVisualizar.swift in Sources */,
 				E0EB195921795D6700C0AAC8 /* Meme.swift in Sources */,
-				E01DF56E2170255C00E77029 /* ViewController.swift in Sources */,
+				E084545E2194F82E00E3DDE0 /* SentMemesTableViewController.swift in Sources */,
+				E01DF56E2170255C00E77029 /* vcCriadorMeme.swift in Sources */,
+				E08454602194F94C00E3DDE0 /* SentMemesTableViewCell.swift in Sources */,
+				E072535F21924D2200482A7F /* CustomMemeCell.swift in Sources */,
+				E072535D219244E000482A7F /* SentMemesCollectionViewController.swift in Sources */,
 				E01DF56C2170255C00E77029 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

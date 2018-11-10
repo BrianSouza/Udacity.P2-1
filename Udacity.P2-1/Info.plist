@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) precisa de permissão para utilizar o albúm de fotos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>$(PRODUCT_NAME) precisa de permissão para utilizar o albúm de fotos.</string>
+	<key>NSAppleMusicUsageDescription - 2</key>
+	<string>$(PRODUCT_NAME) precisa de permissão para utilizar o albúm de fotos.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>$(PRODUCT_NAME) precisa de permissão para utilizar o albúm de fotos.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) precisa de permissão para usar a camera</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
