@@ -65,20 +65,9 @@ class SentMemesCollectionViewController : UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    /*
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "vcCriadorMeme") as! vcCriadorMeme
-        
-        //Populate view controller with data from the selected item
-        detailController.meme = memes[(indexPath as NSIndexPath).row]
-        
-        // Present the view controller using navigation
-        navigationController!.pushViewController(detailController, animated: true)
- */
-        
+   
         performSegue(withIdentifier: "colDetailSegue", sender: memes[indexPath.row])
-        /*
-        performSegue(withIdentifier: "editColSegue", sender: memes[indexPath.row])
-        */
+       
     }
     
     
@@ -89,12 +78,6 @@ class SentMemesCollectionViewController : UICollectionViewController {
             let detailVC = segue.destination as! vcVisulizar
             detailVC.meme = meme
         }
-        /*
-        if segue.identifier == "editColSegue"{
-            let meme: Meme = sender as! Meme
-            let criadorMeme = segue.destination as! vcCriadorMeme
-            criadorMeme.meme = meme
-        }
-         */
+        
     }
 }

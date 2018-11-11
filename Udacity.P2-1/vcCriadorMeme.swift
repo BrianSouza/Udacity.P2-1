@@ -163,6 +163,7 @@ class vcCriadorMeme: UIViewController , UITextFieldDelegate,UIImagePickerControl
         txtTop.text = ""
         txtBottom.text = ""
         btnCompartilhar.isEnabled = ((pickImage.image?.hashValue) != nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

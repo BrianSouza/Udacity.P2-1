@@ -42,9 +42,7 @@ class SentMemesTableViewController : UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "tvDetailSegue", sender: memes[indexPath.row])
-        /*
-        performSegue(withIdentifier: "editTableSegue", sender: memes[indexPath.row])
-         */
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,12 +51,6 @@ class SentMemesTableViewController : UITableViewController{
             let detailVC = segue.destination as! vcVisulizar
             detailVC.meme = meme
         }
-        /*
-        if segue.identifier == "editTableSegue" {
-            let meme: Meme = sender as! Meme
-            let criadorVC = segue.destination as! vcCriadorMeme
-            criadorVC.meme = meme
-        }
-        */
+       
     }
 }
